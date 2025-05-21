@@ -2,7 +2,7 @@ name: CI with Maven
 
 on:
   push:
-    branches: [ master ]  # or use 'master' if that's your branch name
+    branches: [ master ]
 
 jobs:
   build:
@@ -26,3 +26,4 @@ jobs:
         with:
           name: hello-world-jar
           path: target/*.jar
+
