@@ -18,7 +18,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build with Maven
+      - name: Build and run tests with Maven
         run: mvn -B package --file pom.xml
 
       - name: Upload JAR artifact
@@ -27,5 +27,9 @@ jobs:
           name: hello-world-jar
           path: target/*.jar
 
-      - name: Run tests
-        run: mvn test
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-report
+          path: target/surefire-reports/
